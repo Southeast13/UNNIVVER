@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+# Delegate to system gradle if available (works on CI like Codemagic).
+if command -v gradle >/dev/null 2>&1; then
+  exec gradle "$@"
+else
+  echo "Gradle not found. Please install Gradle or add a proper gradle wrapper."
+  exit 1
+fi
